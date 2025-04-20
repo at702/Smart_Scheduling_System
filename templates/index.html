@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Appointment System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Current Wait Times</h1>
+    <p>As of {{ current_time }}:</p>
+    
+    <div class="wait-times">
+        <div class="doctor">
+            <h2>Doctor A</h2>
+            <p>{{ wait_times.doctor_a }} minutes</p>
+        </div>
+        <div class="doctor">
+            <h2>Doctor B</h2>
+            <p>{{ wait_times.doctor_b }} minutes</p>
+        </div>
+        <div class="doctor">
+            <h2>Doctor C</h2>
+            <p>{{ wait_times.doctor_c }} minutes</p>
+        </div>
+    </div>
+</body>
+</html>

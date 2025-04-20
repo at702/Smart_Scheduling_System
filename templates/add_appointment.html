@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Schedule Appointment</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Schedule New Appointment</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="messages">
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST" action="/add_appointment">
+        <div>
+            <label for="patient_name">Patient Name:</label>
+            <input type="text" id="patient_name" name="patient_name" required>
+        </div>
+        
+        <div>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+        
+        <div>
+            <label for="doctor_id">Doctor:</label>
+            <select id="doctor_id" name="doctor_id" required>
+                {% for doctor in doctors %}
+                    <option value="{{ doctor.doctor_id }}">{{ doctor.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div>
+            <label for="scheduled_time">Appointment Time:</label>
+            <input type="datetime-local" id="scheduled_time" name="scheduled_time" required>
+        </div>
+        
+        <button type="submit">Schedule Appointment</button>
+    </form>
+    
+    <p><a href="/">Back to Wait Times</a></p>
+</body>
+</html>
